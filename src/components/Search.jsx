@@ -4,25 +4,6 @@ import {FaSearch} from'react-icons/fa'
 
 const Search = ({keyword, setKeyword, handleSearch}) => {
 
-  async function handleInputChange(event) {
-    const word = event.target.value.trim();
-
-    if (keyword !== "") {
-      const url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${keyword}?key=your_api_key`;
-      const response = await fetch(url);
-      const data = await response.json();
-
-      // Filter out non-words and limit the suggestions to 5
-      const words = data.filter((result) => typeof result === "string").slice(0, 5);
-
-      // Update the suggestions
-      setSuggestions(words);
-    } else {
-      setSuggestions([]);
-    }
-
-    setInputValue(word);
-  }
 
   return (
     <form onSubmit={handleSearch} className='p-4  flex gap-2 items-center w-3/5  relative pb-3 appearance-none focus:outline-none border-none'>
