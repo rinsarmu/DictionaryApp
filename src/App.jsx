@@ -1,4 +1,4 @@
-import { useState, useMemo,useEffect,useCallback } from 'react'
+import { useState, useMemo, useEffect, useCallback } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import axios from 'axios'
@@ -13,20 +13,20 @@ import { useTheme } from './components/DarkMode/ThemeContext'
 
 function App() {
   const [count, setCount] = useState(0)
-  const[keyword, setKeyword] = useState('word')
+  const [keyword, setKeyword] = useState('word')
   const [result, setResult] = useState(null)
   const [load, setLoad] = useState(true)
   const [error, setError] = useState(null)
   const api = "https://api.dictionaryapi.dev/api/v2/entries/en";
   const { isDarkMode, toggleTheme } = useTheme();
 
-  
-  const handleSearch= async(e)=>{
+
+  const handleSearch = async (e) => {
     e.preventDefault()
     console.log("NEw kkkkkkkkk", keyword)
-    setCount(prev=>prev+1)
+    setCount(prev => prev + 1)
     console.log(count)
-    if(keyword.length > 0) {
+    if (keyword.length > 0) {
       console.log("loading...")
       setLoad(true)
       setResult(null)
@@ -41,7 +41,7 @@ function App() {
 
       console.log(res)
 
-    } catch(e){
+    } catch (e) {
       console.error(e)
       setLoad(false)
       setError(`We're sorry, the word you entered ${keyword} is not in our dictionary.`)
@@ -51,7 +51,7 @@ function App() {
   }
 
   const detailsComponent = useMemo(() => {
-    return  <Details result={result} keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/>
+    return <Details result={result} keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch} />
   }, [result]);
 
   useEffect(() => {
@@ -59,12 +59,12 @@ function App() {
   }, [count]);
   useEffect(() => {
     const syntheticEvent = {
-      preventDefault: () => {},
+      preventDefault: () => { },
       target: { value: "blu" }
     };
     handleSearch(syntheticEvent);
   }, [keyword]);
-  
+
   const handleKeywordChange = useCallback((newKeyword) => {
     setKeyword(newKeyword)
   }, [])
@@ -75,20 +75,17 @@ function App() {
   };
 
   return (
-    <WrapComponent>
-  <div className={` ${isDarkMode ? 'darkMode':"bg-white" }  w-screen h-full flex flex-col items-center justify-center text-lg`}>
-    <Navigation keyword={keyword} setKeyword={setKeyword} handleToggleTheme = {handleToggleTheme} handleSearch={handleSearch} />
-    {/* <Search keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/> */}
-    {load && < Spinning />}
-    {!load && !error && detailsComponent }
-    {/* {error} */}
-    {error && <Warning errorText={error} />}
-   
-  </div>
-  </WrapComponent>
+      <div className={` ${isDarkMode ? 'darkMode' : "bg-gray-50 transition ease-out duration-1000"}  w-screen h-full flex flex-col items-center justify-center text-lg`}>
+        <Navigation keyword={keyword} setKeyword={setKeyword} handleToggleTheme={handleToggleTheme} handleSearch={handleSearch} />
+        {/* <Search keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/> */}
+        {load && < Spinning />}
+        {!load && !error && detailsComponent}
+        {/* {error} */}
+        {error && <Warning errorText={error} />}
+
+      </div>
   )
 }
 
 export default App
 
-  

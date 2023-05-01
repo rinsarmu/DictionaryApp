@@ -3,15 +3,24 @@
 @tailwind utilities;
 body{
     /* background-color: #2C2F33; */
-background-color: #17212b;
+/* background-color: #17212b;*/
 background-color: #0e1621;
+
 
 color: #7e868e;
 
 }
+/* #root{
+    height: 100%;
+    width: 100%;
+    padding: 20px; 
+     background-color: green; 
+} */
 
 .darkMode{
 background-color: #0e1621;
+transition: ease-out 1s;
+
 
 }
 
@@ -25,6 +34,7 @@ background-color: #0e1621;
 .cardDarkMode{
 background-color: #17212b;
 background-color: #1e2c3a;
+
 color: #fff;
 
 }
