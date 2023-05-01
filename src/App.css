@@ -1,15 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+#root {
+    height: 100%;
+}
+
+body {
     /* background-color: #2C2F33; */
-/* background-color: #17212b;*/
-background-color: #0e1621;
+    /* background-color: #17212b;*/
+    background-color: #0e1621;
 
 
-color: #7e868e;
+    color: #7e868e;
+    overflow: hidden;
 
 }
+
 /* #root{
     height: 100%;
     width: 100%;
@@ -17,28 +30,29 @@ color: #7e868e;
      background-color: green; 
 } */
 
-.darkMode{
-background-color: #0e1621;
-transition: ease-out 1s;
+.darkMode {
+    background-color: #0e1621;
+    transition: ease-out 1s;
 
 
 }
 
-.searchDarkMode{
+.searchDarkMode {
     background-color: #1c2937;
     outline: none;
-    
+
     color: #ddd;
     /* bg-[#23272A]  */
 }
-.cardDarkMode{
-background-color: #17212b;
-background-color: #1e2c3a;
 
-color: #fff;
+.cardDarkMode {
+    background-color: #17212b;
+    background-color: #1e2c3a;
+
+    color: #fff;
 
 }
 
-.partsOfSpeechDarkMode{
-    color:antiquewhite
+.partsOfSpeechDarkMode {
+    color: antiquewhite
 }

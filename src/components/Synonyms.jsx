@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTheme } from './DarkMode/ThemeContext';
 
 const Synonyms = ({synonyms,handleSearch, keyword, setKeyword}) => {
+
+  const { isDarkMode, toggleTheme } = useTheme();
 
     function handleSynonymClick(synonym) {
       const syntheticEvent = {
@@ -13,7 +16,7 @@ const Synonyms = ({synonyms,handleSearch, keyword, setKeyword}) => {
     
     let listSynonym = synonyms.map(synonym=><button 
         type="submit" 
-        className='pl-2 text-[#ddd] underline decoration-slate-500' 
+        className={`${isDarkMode ?"text-[#ddd]" : 'text-black'} pl-2  underline decoration-slate-500`}
         onClick={(e)=>handleSynonymClick(synonym)}
       >
         {synonym}

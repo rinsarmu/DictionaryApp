@@ -44,7 +44,7 @@ function App() {
     } catch (e) {
       console.error(e)
       setLoad(false)
-      setError(`We're sorry, the word you entered ${keyword} is not in our dictionary.`)
+      setError(`We're sorry, the word you entered "${keyword}" is not in our dictionary.`)
 
     }
 
@@ -75,7 +75,7 @@ function App() {
   };
 
   return (
-      <div className={` ${isDarkMode ? 'darkMode' : "bg-gray-50 transition ease-out duration-1000"}  w-screen h-full flex flex-col items-center justify-center text-lg`}>
+      <div className={` ${isDarkMode ? 'darkMode' : "bg-gray-50 transition ease-out duration-1000"}  w-screen h-screen overflow-y-scroll flex flex-col items-center  text-lg`}>
         <Navigation keyword={keyword} setKeyword={setKeyword} handleToggleTheme={handleToggleTheme} handleSearch={handleSearch} />
         {/* <Search keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/> */}
         {load && < Spinning />}

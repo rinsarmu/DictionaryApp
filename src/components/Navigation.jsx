@@ -26,7 +26,10 @@ const Navigation = ({keyword, setKeyword, handleSearch, handleToggleTheme}) => {
         }
       </MyButton>
       <MyButton>
-        <FaGithub />
+        <a href="">
+         <FaGithub />
+
+        </a>
       </MyButton>
       </div>
      
