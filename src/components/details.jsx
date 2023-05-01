@@ -9,11 +9,14 @@ import {BsFillBookmarkStarFill} from 'react-icons/bs'
 import WrapComponent from '../hoc/WrapComponent';
 import Toast from './Toast';
 import { useState } from 'react';
+import { useTheme } from './DarkMode/ThemeContext';
 
 
 const details = ({result,keyword,setKeyword,handleSearch}) => {
     const { word, phonetics, meanings } = result;
     const [showToast, setShowToast] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
+
 
     const {partOfSpeech, synonyms, definitions} = meanings[0]
     // console.log("ss", synonyms)
@@ -30,7 +33,8 @@ const details = ({result,keyword,setKeyword,handleSearch}) => {
         <div className='w-3/5'>
            <div className='flex gap-4 space-x-3'>
                 <div className='flex items-center pt-4 space-x-4'>
-                    <h1 className='text-3xl '>{word}</h1>
+                    <h1 className={`${isDarkMode ?'text-[#7e868e]':' text-black' } text-3xl `}>{word}
+                    </h1>
                     <PlayAudio phonetics={phonetics}/>
                     <PhoneticText phonetics={phonetics} />
                     <div className=''>
@@ -38,7 +42,6 @@ const details = ({result,keyword,setKeyword,handleSearch}) => {
                     <MyButton >
                         <BsFillBookmarkStarFill onClick={handleClick} />
                     </MyButton>
-                    <button className='' onClick={handleClick}>gg</button>
                     </div>
 
                 </div>

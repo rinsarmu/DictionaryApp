@@ -1,8 +1,11 @@
 import React,{useEffect, useState} from 'react'
 import {MdArrowDropDown} from 'react-icons/md'
+import { useTheme } from './DarkMode/ThemeContext';
 
 const Meaning = ({meaning,item}) => {
     const [show, setShow] = useState(false)
+    const { isDarkMode, toggleTheme } = useTheme();
+
     let text =''
     const {partOfSpeech, synonyms, definitions} = meaning
 
@@ -22,7 +25,7 @@ const Meaning = ({meaning,item}) => {
             
             <div className='flex items-center '> 
             <h1 
-                className='text-3xl  capitalize' 
+                className={`${isDarkMode ? '' : "bg-white text-[#0e1621]"} text-3xl mb-4 capitalize`}
                 onClick={e=>setShow(prev=>!prev)}>
                     {partOfSpeech}  
             </h1>
@@ -30,7 +33,7 @@ const Meaning = ({meaning,item}) => {
             </div>
            
 
-            {show && <ol className='cardDarkMode p-8 rounded-2xl shadow-sm shadow-gray-800'>
+            {show && <ol className={`${isDarkMode ? 'cardDarkMode' : "cardDarkMode"} p-8 rounded-2xl shadow-sm shadow-gray-800`}>
                 {newDefinition}
             </ol>}
         </div>

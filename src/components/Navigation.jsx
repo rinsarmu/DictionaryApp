@@ -3,10 +3,12 @@ import MyButton from './MyButton'
 import {MdDarkMode} from 'react-icons/md'
 import {FaGithub} from 'react-icons/fa'
 import {BsFillBookmarkStarFill} from 'react-icons/bs'
+import {FiSun} from 'react-icons/fi'
 import Search from './Search'
 import { useTheme } from './DarkMode/ThemeContext'
 
 const Navigation = ({keyword, setKeyword, handleSearch, handleToggleTheme}) => {
+  const { isDarkMode, toggleTheme } = useTheme();
 
   return (
     <div className='flex  w-full justify-around items-center py-2 mb-4 border-b border-gray-700 '>
@@ -17,7 +19,11 @@ const Navigation = ({keyword, setKeyword, handleSearch, handleToggleTheme}) => {
         <BsFillBookmarkStarFill />
       </MyButton>
       <MyButton>
-        <MdDarkMode onClick={handleToggleTheme}/>
+        { isDarkMode ?
+          <FiSun onClick={handleToggleTheme} /> :
+          <MdDarkMode onClick={handleToggleTheme}/>
+          
+        }
       </MyButton>
       <MyButton>
         <FaGithub />
