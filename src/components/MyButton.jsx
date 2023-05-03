@@ -24,7 +24,7 @@ const MyButton = ({children}) => {
   return (
    
   
-    <button className={`${isDarkMode ?'hover:text-gray-700':'hover:text-gray-600 text-black' } text-2xl `}>
+    <button className={`${isDarkMode ?'hover:text-gray-100' :'hover:text-gray-800'} text-2xl `}>
       {children}
     </button>
   )

@@ -20,17 +20,17 @@ const SlideShowScreen = () => {
 
   return (
     <WrapComponent>
-      {isSmallScreen && <div className={`flex flex-col w-3/6 ${ isDarkMode? 'darkMode': 'bg-gray-100'} opacity-85 p-3 rounded-xl absolute top-24  z-10 left-0 h-screen space-y-4`}>
+      {isSmallScreen && <div className={`flex flex-col w-7/12 ${ isDarkMode? 'darkMode': 'bg-gray-100'} opacity-85 p-3 rounded-xl absolute top-24  z-10 left-0 h-screen space-y-4 cursor-pointer`}>
       <AppLogo />
       <div>
-        <div className='flex space-x-4 mb-2 items-center'>
+        <div className={`flex space-x-4 mb-2 items-center ${isDarkMode ?'hover:text-gray-100' :'hover:text-gray-800'} `}>
           <MyButton>
             <BsFillBookmarkStarFill />
 
           </MyButton>
           <p>Bookmarks</p>
         </div>
-        <div className='flex space-x-4 mb-2 items-center' onClick={handleToggleTheme}>
+        <div className={`flex space-x-4 mb-2 items-center ${isDarkMode ?'hover:text-gray-100' :'hover:text-gray-800'} `}onClick={handleToggleTheme}>
         <MyButton>
         { isDarkMode ?
           <FiSun  /> :
@@ -47,14 +47,17 @@ const SlideShowScreen = () => {
           </p>
         </div>
 
-        <div className='flex space-x-4 mb-2 items-center'>
+        <div className={`flex space-x-4 mb-2 items-center ${isDarkMode ?'hover:text-gray-100' :'hover:text-gray-800'} `}>
         <MyButton>
         <a href="https://github.com/rinsarmu/DictionaryApp" target='_blank'>
          <FaGithub />
 
         </a>
       </MyButton>
-          <p>Project</p>
+      <a href="https://github.com/rinsarmu/DictionaryApp" target='_blank'>
+        <p>Project</p>
+        </a>
+
         </div>
       </div>
 
