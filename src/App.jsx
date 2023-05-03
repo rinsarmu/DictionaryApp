@@ -10,6 +10,7 @@ import Navigation from './components/Navigation';
 import Warning from './components/Warning'
 import WrapComponent from './hoc/WrapComponent'
 import { useTheme } from './components/DarkMode/ThemeContext'
+import BackDrop from './components/ui/BackDrop'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,7 +19,7 @@ function App() {
   const [load, setLoad] = useState(true)
   const [error, setError] = useState(null)
   const api = "https://api.dictionaryapi.dev/api/v2/entries/en";
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { isDarkMode, toggleTheme,showSlide } = useTheme();
 
 
   const handleSearch = async (e) => {
@@ -71,19 +72,23 @@ function App() {
 
   const handleToggleTheme = () => {
     toggleTheme();
-    document.body.classList.toggle("dark");
+    // document.body.classList.toggle("dark");
   };
 
   return (
-      <div className={` ${isDarkMode ? 'darkMode' : "bg-gray-50 transition ease-out duration-1000"}  w-screen h-screen overflow-y-scroll flex flex-col items-center  text-lg`}>
+    <WrapComponent>
+      <div className={` ${isDarkMode ? 'darkMode' : "bg-[#F7F7F9] transition ease-out duration-1000"}  w-screen h-screen overflow-y-scroll flex flex-col items-center  text-lg relative `}>
         <Navigation keyword={keyword} setKeyword={setKeyword} handleToggleTheme={handleToggleTheme} handleSearch={handleSearch} />
         {/* <Search keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/> */}
         {load && < Spinning />}
         {!load && !error && detailsComponent}
         {/* {error} */}
         {error && <Warning errorText={error} />}
+        
 
       </div>
+      {showSlide && <BackDrop />}
+      </WrapComponent>
   )
 }
 

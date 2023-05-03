@@ -56,3 +56,16 @@ body {
 .partsOfSpeechDarkMode {
     color: antiquewhite
 }
+
+@media screen and (max-width: 768px) {
+    /* styles for screens with a maximum width of 768px */
+    .mediaQuery{
+        /* display: none; */
+        width: auto;
+        /* background-color: green; */
+    }
+    .nav--buttons{
+        display: none;
+    }
+  }
+  

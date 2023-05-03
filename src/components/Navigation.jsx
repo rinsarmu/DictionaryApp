@@ -1,20 +1,35 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import MyButton from './MyButton'
 import {MdDarkMode} from 'react-icons/md'
+import {FiSun} from 'react-icons/fi'
 import {FaGithub} from 'react-icons/fa'
 import {BsFillBookmarkStarFill} from 'react-icons/bs'
-import {FiSun} from 'react-icons/fi'
 import Search from './Search'
 import { useTheme } from './DarkMode/ThemeContext'
+import {GiHamburgerMenu} from 'react-icons/gi'
+import {MdClose} from 'react-icons/md'
+import AppLogo from './AppLogo'
+import WrapComponent from '../hoc/WrapComponent'
+import SlideShowScreen from './ui/slideShowScreen'
+import BackDrop from './ui/BackDrop'
 
 const Navigation = ({keyword, setKeyword, handleSearch, handleToggleTheme}) => {
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { isDarkMode, isSmallScreen, handleToggleMenu,showSlide } = useTheme();
 
+
+  useEffect(() => {
+    console.log('screen', showSlide);
+  }, [showSlide, handleToggleMenu]);
   return (
-    <div className='flex  w-full justify-around items-center py-2 mb-4 border-b border-gray-700 '>
-      <h2>MeaningApp</h2>
+    <WrapComponent>
+    <div className={`flex  w-full justify-around items-center py-2 mb-4 border-b border-gray-700 z-10 ${isDarkMode ? '':'bg-white'} p-3 fixed top-0 left`}>
+      {!isSmallScreen && <AppLogo />}
+      {isSmallScreen && <MyButton>
+        {showSlide ? <MdClose onClick={handleToggleMenu}  /> :
+        <GiHamburgerMenu onClick={handleToggleMenu} />}
+      </MyButton>}
       <Search keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/> 
-      <div className='flex space-x-8'>
+      <div className='sm:flex space-x-8 nav--buttons '>
       <MyButton>
         <BsFillBookmarkStarFill />
       </MyButton>
@@ -26,7 +41,7 @@ const Navigation = ({keyword, setKeyword, handleSearch, handleToggleTheme}) => {
         }
       </MyButton>
       <MyButton>
-        <a href="">
+        <a href="https://github.com/rinsarmu/DictionaryApp" target='_blank'>
          <FaGithub />
 
         </a>
@@ -34,6 +49,9 @@ const Navigation = ({keyword, setKeyword, handleSearch, handleToggleTheme}) => {
       </div>
      
     </div>
+    {showSlide && <SlideShowScreen />}
+    {/* {showSlide && <BackDrop />} */}
+    </WrapComponent>
   )
 }
 

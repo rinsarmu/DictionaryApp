@@ -30,7 +30,7 @@ const details = ({result,keyword,setKeyword,handleSearch}) => {
 
     return (
         <WrapComponent>
-        <div className='w-3/5'>
+        <div className='sm:w-3/5 mediaQuery absolute top-24 px-3'>
            <div className='flex gap-4 space-x-3'>
                 <div className='flex items-center pt-4 space-x-4'>
                     <h1 className={`${isDarkMode ?'text-[#7e868e]':' text-black' } text-3xl `}>{word}
