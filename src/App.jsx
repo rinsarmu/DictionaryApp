@@ -19,11 +19,12 @@ function App() {
   const [load, setLoad] = useState(true)
   const [error, setError] = useState(null)
   const api = "https://api.dictionaryapi.dev/api/v2/entries/en";
-  const { isDarkMode, toggleTheme,showSlide } = useTheme();
+  const { isDarkMode, toggleTheme,showSlide,setShowSlide } = useTheme();
 
 
   const handleSearch = async (e) => {
     e.preventDefault()
+    setShowSlide(false)
     console.log("NEw kkkkkkkkk", keyword)
     setCount(prev => prev + 1)
     console.log(count)
