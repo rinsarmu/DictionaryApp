@@ -9,7 +9,7 @@ const BackDrop = () => {
     // document.body.classList.toggle("dark");
   };
   return (
-    <div className='w-full h-screen  cursor-pointer top-0 left-0 z-4   opacity-50 overflow-hidden fixed backdrop' onClick={toggleMenu}>
+    <div className='w-full h-screen  cursor-pointer top-0 left-0 z-20  opacity-50 overflow-hidden fixed backdrop' onClick={toggleMenu}>
     </div>
   )
 }
