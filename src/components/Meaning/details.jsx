@@ -4,12 +4,13 @@ import PlayAudio from './PlayAudio';
 import ShowMeaning from './ShowMeaning';
 import PhoneticText from './PhoneticText';
 import Synonyms from './Synonyms';
-import MyButton from '../Button/MyButton';
+
 import {BsFillBookmarkStarFill} from 'react-icons/bs'
-import WrapComponent from '../../hoc/WrapComponent';
 import Toast from '../Alert/Toast';
 import { useState } from 'react';
 import { useTheme } from '../DarkMode/ThemeContext';
+import MyButton from '../Button/MyButton';
+import WrapComponent from '../../hoc/WrapComponent';
 
 
 const details = ({result,keyword,setKeyword,handleSearch}) => {
