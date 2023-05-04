@@ -13,7 +13,7 @@ const PlayAudio = ({phonetics}) => {
     
   return (
     <div>
-        <button onClick={playAudio} className={`${isDarkMode ? 'bg-black p-3': ''}p-2 rounded-xl`}>
+        <button onClick={playAudio} className={`p-2 rounded-xl`}>
             <AiFillSound />
         </button>
     </div>

@@ -1,6 +1,8 @@
 import React from 'react'
 import {FaSearch} from'react-icons/fa'
 import { useTheme } from '../DarkMode/ThemeContext';
+import {MdClose} from 'react-icons/md'
+
 
 
 const Search = ({keyword, setKeyword, handleSearch}) => {
@@ -11,16 +13,22 @@ const Search = ({keyword, setKeyword, handleSearch}) => {
     RemoveToggleMenu()
 
   }
+  const clearSearch =()=>{
+    setKeyword('')
+  }
 
 
   return (
-    <form onSubmit={handleSearch} onClick={RemoveToggleMenu} className={`p-4   flex gap-2 items-center ${isSmallScreen ? 'w-full' : 'w-3/5' } relative pb-3 appearance-none focus:outline-none border-none`}>
+    <form onSubmit={handleSearch} onClick={RemoveToggleMenu} className={`py-4 px-2 pr-1  flex gap-2 items-center ${isSmallScreen ? 'w-full' : 'w-3/5' } relative pb-3 appearance-none focus:outline-none border-none`}>
 
-      <input type="search" value={keyword} onChange={handleChange} className={`p-2 px-5 rounded-3xl w-full ${ isDarkMode ? 'searchDarkMode' : 'bg-black text-red-700' }appearance-none focus:outline-none border-none  `}  />
-      <button type='submit' className=' p-1 absolute top-6 right-8'>
-
+      <input type="text" value={keyword} onChange={handleChange} className={`p-2 pl-[40px] px-5 rounded-3xl w-full ${ isDarkMode ? 'searchDarkMode' : 'bg-gray-200 text-black' } cursor-text appearance-none focus:outline-none border-none  `}  />
+      <button type='submit' className=' p-1 absolute top-6 left-4'>
       <FaSearch className=' ' />
       </button>
+      <p onClick={clearSearch} className=' p-1 cursor-pointer absolute top-6 right-3'>
+      {/* <FaSearch className=' ' /> */}
+      <MdClose />
+      </p>
       
     </form>
   )

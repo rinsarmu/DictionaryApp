@@ -29,7 +29,7 @@ const Navigation = ({keyword, setKeyword, handleSearch, handleToggleTheme}) => {
         <GiHamburgerMenu onClick={handleToggleMenu} />}
       </MyButton>}
       <Search keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/> 
-      <div className='sm:flex space-x-8 nav--buttons '>
+      {!isSmallScreen && <div className='sm:flex space-x-8 nav--buttons '>
       <MyButton>
         <BsFillBookmarkStarFill />
       </MyButton>
@@ -46,7 +46,7 @@ const Navigation = ({keyword, setKeyword, handleSearch, handleToggleTheme}) => {
 
         </a>
       </MyButton>
-      </div>
+      </div>}
      
     </div>
     {showSlide && <SlideShowScreen />}
