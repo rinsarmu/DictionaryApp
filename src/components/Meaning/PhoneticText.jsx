@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTheme } from './DarkMode/ThemeContext';
+import { useTheme } from '../DarkMode/ThemeContext';
 
 const PhoneticText = ({phonetics}) => {
   const { isDarkMode, toggleTheme } = useTheme();

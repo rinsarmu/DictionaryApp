@@ -4,12 +4,12 @@ import PlayAudio from './PlayAudio';
 import ShowMeaning from './ShowMeaning';
 import PhoneticText from './PhoneticText';
 import Synonyms from './Synonyms';
-import MyButton from './MyButton';
+import MyButton from '../Button/MyButton';
 import {BsFillBookmarkStarFill} from 'react-icons/bs'
-import WrapComponent from '../hoc/WrapComponent';
-import Toast from './Toast';
+import WrapComponent from '../../hoc/WrapComponent';
+import Toast from '../Alert/Toast';
 import { useState } from 'react';
-import { useTheme } from './DarkMode/ThemeContext';
+import { useTheme } from '../DarkMode/ThemeContext';
 
 
 const details = ({result,keyword,setKeyword,handleSearch}) => {
@@ -30,7 +30,7 @@ const details = ({result,keyword,setKeyword,handleSearch}) => {
 
     return (
         <WrapComponent>
-        <div className='sm:w-3/5 mediaQuery absolute top-24 px-3'>
+        <div className='sm:w-3/5 mediaQuery absolute top-24 px-[5px]'>
            <div className='flex gap-4 space-x-3'>
                 <div className='flex items-center pt-4 space-x-4'>
                     <h1 className={`${isDarkMode ?'text-[#7e868e]':' text-black' } text-3xl `}>{word}

@@ -16,7 +16,7 @@
 
 import React from 'react'
 import { Children } from 'react'
-import { useTheme } from './DarkMode/ThemeContext';
+import { useTheme } from '../DarkMode/ThemeContext';
 
 const MyButton = ({children}) => {
   const { isDarkMode, toggleTheme } = useTheme();

@@ -12,6 +12,12 @@ const ThemeProvider = ({ children }) => {
 
   const handleToggleMenu = useCallback(() => {
     setShowSlide((prev) => !prev);
+    document.body.classList.toggle('no-scroll');
+  }, []);
+
+  const RemoveToggleMenu =useCallback(() => {
+    setShowSlide((prev) => false);
+    document.body.classList.toggle('no-scroll');
   }, []);
 
   React.useEffect(() => {
@@ -25,7 +31,7 @@ const ThemeProvider = ({ children }) => {
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode,isSmallScreen,handleToggleMenu, showSlide, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDarkMode,isSmallScreen,handleToggleMenu, showSlide, toggleTheme,RemoveToggleMenu }}>
       {children}
     </ThemeContext.Provider>
   );

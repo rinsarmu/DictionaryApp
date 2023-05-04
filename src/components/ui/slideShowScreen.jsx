@@ -1,6 +1,6 @@
 import React from 'react'
-import MyButton from '../MyButton'
-import AppLogo from '../AppLogo'
+import MyButton from '../Button/MyButton'
+import AppLogo from '../nav/AppLogo'
 import { BsFillBookmarkStarFill } from 'react-icons/bs'
 import {MdDarkMode} from 'react-icons/md'
 import {FiSun} from 'react-icons/fi'
@@ -20,7 +20,7 @@ const SlideShowScreen = () => {
 
   return (
     <WrapComponent>
-      {isSmallScreen && <div className={`flex flex-col w-7/12 ${ isDarkMode? 'darkMode': 'bg-gray-100'} opacity-85 p-3 rounded-xl absolute top-24  z-10 left-0 h-screen space-y-4 cursor-pointer`}>
+      {isSmallScreen && <div className={`flex flex-col w-7/12 ${ isDarkMode? 'darkMode': 'bg-white'} opacity-85 p-3  fixed top-[88px]  z-10 left-0 h-screen space-y-4 cursor-pointer`}>
       <AppLogo />
       <div>
         <div className={`flex space-x-4 mb-2 items-center ${isDarkMode ?'hover:text-gray-100' :'hover:text-gray-800'} `}>

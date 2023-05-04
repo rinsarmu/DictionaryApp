@@ -1,6 +1,6 @@
 import React from 'react'
 import{AiFillSound} from'react-icons/ai'
-import { useTheme } from './DarkMode/ThemeContext';
+import { useTheme } from '../DarkMode/ThemeContext';
 
 
 const PlayAudio = ({phonetics}) => {

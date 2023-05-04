@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {MdArrowDropDown,MdOutlineArrowDropUp} from 'react-icons/md'
-import { useTheme } from './DarkMode/ThemeContext';
+import { useTheme } from '../DarkMode/ThemeContext';
 
 const Meaning = ({meaning,item}) => {
     const [show, setShow] = useState(false)

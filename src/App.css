@@ -57,6 +57,20 @@ body {
     color: antiquewhite
 }
 
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    background: rgba(0, 0, 0);
+  }
+  
+
+.backdrop.no-scroll {
+    overflow: hidden;
+  }
+
 @media screen and (max-width: 768px) {
     /* styles for screens with a maximum width of 768px */
     .mediaQuery{
