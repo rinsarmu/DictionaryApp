@@ -80,6 +80,7 @@ function App() {
     <WrapComponent>
       <div className={` ${isDarkMode ? 'darkMode' : "bg-[#F7F7F9] transition ease-out duration-1000"}  w-screen h-screen overflow-y-scroll flex flex-col items-center  text-lg relative `}>
         <Navigation keyword={keyword} setKeyword={setKeyword} handleToggleTheme={handleToggleTheme} handleSearch={handleSearch} />
+        
         {/* <Search keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/> */}
         {load && < Spinning />}
         {!load && !error && detailsComponent}

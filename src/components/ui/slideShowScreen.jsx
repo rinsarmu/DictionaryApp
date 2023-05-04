@@ -22,7 +22,7 @@ const SlideShowScreen = () => {
 
   return (
     <WrapComponent>
-      {isSmallScreen && <div className={`flex flex-col w-7/12 border-r border-gray-800 ${ isDarkMode? 'darkMode': 'bg-white'} opacity-85 p-3  fixed top-[88px]  z-10 left-0 h-screen space-y-4 cursor-pointer transform ease-in duration-1000`}>
+      {isSmallScreen && <div className={`flex flex-col w-7/12 border-r border-gray-800 ${ isDarkMode? 'darkMode': 'bg-white'} opacity-85 p-3  fixed top-[88px]  z-30 left-0 h-screen space-y-4 cursor-pointer transform ease-in duration-1000`}>
       <AppLogo />
       <div>
         <div className={`flex space-x-4 mb-2 items-center ${isDarkMode ?'hover:text-gray-100' :'hover:text-gray-800'} `}>
@@ -54,7 +54,7 @@ const SlideShowScreen = () => {
             <BiNotepad />
 
           </MyButton>
-          <p>Note</p>
+          <p > Note</p>
         </div>
 
         <div className={`flex space-x-4 mb-2 items-center ${isDarkMode ?'hover:text-gray-100' :'hover:text-gray-800'} `}onClick={handleToggleTheme}>

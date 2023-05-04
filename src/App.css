@@ -37,6 +37,14 @@ body {
 
 }
 
+/* .hello{
+    color:red
+}
+
+.hello:hover{
+    color:black
+} */
+
 .searchDarkMode {
     background-color: #1c2937;
     outline: none;
