@@ -1,4 +1,7 @@
 import { useState, useMemo, useEffect, useCallback } from 'react'
+// import spellchecker from 'spell-checker';
+import Typo from 'typo-js';
+
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import axios from 'axios'
@@ -18,8 +21,11 @@ function App() {
   const [result, setResult] = useState(null)
   const [load, setLoad] = useState(true)
   const [error, setError] = useState(null)
+  const [suggestions, setSuggestions] = useState([])
   const api = "https://api.dictionaryapi.dev/api/v2/entries/en";
   const { isDarkMode, toggleTheme,showSlide,handleToggleMenu } = useTheme();
+  const dictionary = new Typo('en_US');
+
 
 
   const handleSearch = async (e) => {
@@ -29,11 +35,26 @@ function App() {
     console.log(count)
     if (keyword.length > 0) {
       console.log("loading...")
+      var is_spelled_correctly = dictionary.check("mispelld");
+      console.log("checking spell \n\n", is_spelled_correctly)
       setLoad(true)
       setResult(null)
       setError('')
     }
     try {
+
+      // Check the spelling of the keyword using cspell-api
+      // const misspelledWords = await spellchecker.checkText(keyword);
+      // console.log(misspelledWords);
+      // if (misspelledWords.length > 0) {
+      //   // If there are misspelled words, suggest corrections
+      //   const suggestions = await spellchecker.getCorrections(misspelledWords[0].text);
+      //   console.log(suggestions);
+      //   setSuggestions(suggestions);
+      // } else {
+      //   setSuggestions([]);
+      // }
+
       const res = await axios.get(`${api}/${keyword}`)
       console.log(res.data)
       setResult(res.data[0])
