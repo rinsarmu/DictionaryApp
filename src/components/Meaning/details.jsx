@@ -16,21 +16,26 @@ import WrapComponent from '../../hoc/WrapComponent';
 const details = ({result,keyword,setKeyword,handleSearch}) => {
     const { word, phonetics, meanings } = result;
     const [showToast, setShowToast] = useState(false);
-  const { isDarkMode, toggleTheme } = useTheme();
-
+  const { isDarkMode, addingWord, checkBookmark,isbookMarked, bookMarking } = useTheme();
 
     const {partOfSpeech, synonyms, definitions} = meanings[0]
     // console.log("ss", synonyms)
 
     let newData =meanings.map((meaning,item)=> <Meaning meaning={meaning} item={item}/>)
 
-    function handleClick() {
+    function handleClick(word) {
         setShowToast(prev=>true);
+        // console.log("bookmarjkkk", checkBookmark(word))
+        checkBookmark(word)
+        console.log("is bookmarked", isbookMarked)
+        addingWord(word, result)
+        bookMarking(word)
+        
         console.log("toast")
       }
 
     return (
-        <WrapComponent>
+        <WrapComponent >
         <div className='sm:w-3/5 mediaQuery absolute top-24 px-[5px]'>
            <div className='flex gap-4 space-x-3 p-3'>
                 <div className='flex items-center pt-4 space-x-4 '>
@@ -41,7 +46,7 @@ const details = ({result,keyword,setKeyword,handleSearch}) => {
                     <div className=''>
                         
                     <MyButton >
-                        <BsFillBookmarkStarFill onClick={handleClick} />
+                        <BsFillBookmarkStarFill onClick={()=>handleClick(word)} />
                     </MyButton>
                     </div>
 

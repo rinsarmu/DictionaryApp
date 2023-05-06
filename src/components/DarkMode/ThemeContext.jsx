@@ -3,20 +3,80 @@ import React, { useState, useContext, useCallback } from "react";
 const ThemeContext = React.createContext();
 
 const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('mode') || false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [showSlide, setShowSlide] = useState(false);
-
-  const [meaning, setMeaning] = useState([
+  const [isbookMarked, setIsBookMarked] = useState(false)
+  const [meaning, setMeaning] = useState(JSON.parse(localStorage.getItem("bookmarkedWords")) || [
     { word: "word", isBookmarked: false, isSaved: false, save: "" },
   ]);
 
-  const bookMarking = word=>{
-    const data = {...meaning}
-    data.map()
-  }
+  const addingWord = (word, meaning) => {
+    
+    const existingWords = JSON.parse(localStorage.getItem("bookmarkedWords")) || [];
+    const existingWord = existingWords.find((w) => w.word === word);
+  
+    if (existingWord) {
+      existingWord.isBookmarked = false;
+      existingWord.isSaved = true;
+      existingWord.save = meaning;
+    } else {
+      const newWord = {
+        word: word,
+        isBookmarked: true,
+        isSaved: true,
+        save: meaning,
+      };
+      existingWords.push(newWord);
+    }
+    // setMeaning((JSON.stringify(existingWords)))
+    localStorage.setItem("bookmarkedWords", JSON.stringify(existingWords));
+    // setMeaning(JSON.parse(localStorage.getItem("bookmarkedWords")))
+    console.log("let me check is existing", existingWords)
+    setMeaning(prev=>prev=[...existingWords])
+  };
+  
+  const bookMarking = (word) => {
+    console.log("we find the word to book mark", word)
+    setMeaning(JSON.parse(localStorage.getItem("bookmarkedWords")))
 
-  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+    const updatedMeaning =  [...meaning]
+    console.log('updatedMeaning:', updatedMeaning);
+    console.log('meaning:', meaning);
+
+    setMeaning((meaning) => {
+      const wordIndex = updatedMeaning.findIndex((mng) => {
+        console.log("comparing:", mng.word, word);
+        return mng.word === word});
+      console.log('index of the word is ', wordIndex)
+  
+      if (wordIndex >= 0) {
+        console.log("we get into the index if", wordIndex)
+        updatedMeaning[wordIndex].isBookmarked = true;
+        localStorage.setItem("bookmarkedWords", JSON.stringify(updatedMeaning));
+      }
+      console.log(updatedMeaning)
+  
+      return updatedMeaning;
+    });
+  };
+  
+
+  const addNote = (word) => {};
+
+  const checkBookmark = (word) => {
+    if (meaning) {
+      const bookmarked = meaning.some(mng => mng.word === word && mng.isBookmarked);
+      setIsBookMarked(bookmarked);
+    }
+    return isbookMarked
+  };
+  
+
+  const toggleTheme = () => {
+    localStorage.setItem('mode', !isDarkMode)
+    return setIsDarkMode(!isDarkMode)
+  };
 
   const handleToggleMenu = useCallback(() => {
     setShowSlide((prev) => !prev);
@@ -43,10 +103,14 @@ const ThemeProvider = ({ children }) => {
       value={{
         isDarkMode,
         isSmallScreen,
+        isbookMarked,
         handleToggleMenu,
         showSlide,
         toggleTheme,
         RemoveToggleMenu,
+        bookMarking,
+        addingWord,
+        checkBookmark
       }}
     >
       {children}

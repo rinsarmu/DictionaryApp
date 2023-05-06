@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useCallback } from 'react'
 // import spellchecker from 'spell-checker';
-import Typo from 'typo-js';
+// import Typo from 'typo-js';
 
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -23,8 +23,8 @@ function App() {
   const [error, setError] = useState(null)
   const [suggestions, setSuggestions] = useState([])
   const api = "https://api.dictionaryapi.dev/api/v2/entries/en";
-  const { isDarkMode, toggleTheme,showSlide,handleToggleMenu } = useTheme();
-  const dictionary = new Typo('en_US');
+  const { isDarkMode,addingWord, toggleTheme,showSlide,handleToggleMenu } = useTheme();
+  // const dictionary = new Typo('en_US');
 
 
 
@@ -35,8 +35,8 @@ function App() {
     console.log(count)
     if (keyword.length > 0) {
       console.log("loading...")
-      var is_spelled_correctly = dictionary.check("mispelld");
-      console.log("checking spell \n\n", is_spelled_correctly)
+      // var is_spelled_correctly = dictionary.check("mispelld");
+      // console.log("checking spell \n\n", is_spelled_correctly)
       setLoad(true)
       setResult(null)
       setError('')
@@ -80,6 +80,7 @@ function App() {
   useEffect(() => {
     console.log(keyword);
   }, [count]);
+
   useEffect(() => {
     const syntheticEvent = {
       preventDefault: () => { },
