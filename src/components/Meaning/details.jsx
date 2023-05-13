@@ -24,12 +24,9 @@ const details = ({result,keyword,setKeyword,handleSearch}) => {
     let newData =meanings.map((meaning,item)=> <Meaning meaning={meaning} item={item}/>)
 
     function handleClick(word) {
-        setShowToast(prev=>true);
-        // console.log("bookmarjkkk", checkBookmark(word))
-        checkBookmark(word)
-        console.log("is bookmarked", isbookMarked)
-        addingWord(word, result)
-        bookMarking(word)
+        // setShowToast(prev=>!prev);
+        // addingWord(word, result)
+        setShowToast(addingWord(word, result))
         
         console.log("toast")
       }
@@ -46,7 +43,7 @@ const details = ({result,keyword,setKeyword,handleSearch}) => {
                     <div className=''>
                         
                     <MyButton >
-                        <BsFillBookmarkStarFill onClick={()=>handleClick(word)} />
+                        <BsFillBookmarkStarFill onClick={()=>handleClick(word)} className={`${showToast ? 'text-yellow-300':''}`}/>
                     </MyButton>
                     </div>
 
@@ -56,7 +53,10 @@ const details = ({result,keyword,setKeyword,handleSearch}) => {
             <Synonyms  synonyms={synonyms} keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch}/>
             
         </div>
-        {showToast && <Toast message="The word has been added to bookmarks!"  />}
+        {showToast && console.log("adddddddddddddddddddddddddddded")}
+        {!showToast && console.log("removed")}
+
+        {/* {showToast && <Toast message="The word has been added to bookmarks!"  />} */}
  
         </WrapComponent>
     )

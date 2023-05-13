@@ -12,15 +12,16 @@ const ThemeProvider = ({ children }) => {
   ]);
 
   const addingWord = (word, meaning) => {
-    
+
     const existingWords = JSON.parse(localStorage.getItem("bookmarkedWords")) || [];
     const existingWord = existingWords.find((w) => w.word === word);
-  
+
     if (existingWord) {
-      existingWord.isBookmarked = false;
+      existingWord.isBookmarked = !existingWord.isBookmarked;
       existingWord.isSaved = true;
       existingWord.save = meaning;
-    } else {
+    }  
+    else {
       const newWord = {
         word: word,
         isBookmarked: true,
@@ -33,45 +34,64 @@ const ThemeProvider = ({ children }) => {
     localStorage.setItem("bookmarkedWords", JSON.stringify(existingWords));
     // setMeaning(JSON.parse(localStorage.getItem("bookmarkedWords")))
     console.log("let me check is existing", existingWords)
-    setMeaning(prev=>prev=[...existingWords])
+    setMeaning(prev => [...prev, ...existingWords])
+    return existingWord.isBookmarked
   };
-  
+
   const bookMarking = (word) => {
-    console.log("we find the word to book mark", word)
-    setMeaning(JSON.parse(localStorage.getItem("bookmarkedWords")))
+    const existingWords = [...meaning]
+    const existingWord = existingWords.find((w) => w.word === word);
+ if (existingWord) {
+  console.log("bookmarked")
+      existingWord.isBookmarked = !existingWord.isBookmarked;
+      existingWord.isSaved = true;
+      existingWord.save = meaning;
+    } else{
+      alert("not bookmarked")
+    }
 
-    const updatedMeaning =  [...meaning]
-    console.log('updatedMeaning:', updatedMeaning);
-    console.log('meaning:', meaning);
 
-    setMeaning((meaning) => {
-      const wordIndex = updatedMeaning.findIndex((mng) => {
-        console.log("comparing:", mng.word, word);
-        return mng.word === word});
-      console.log('index of the word is ', wordIndex)
-  
-      if (wordIndex >= 0) {
-        console.log("we get into the index if", wordIndex)
-        updatedMeaning[wordIndex].isBookmarked = true;
-        localStorage.setItem("bookmarkedWords", JSON.stringify(updatedMeaning));
-      }
-      console.log(updatedMeaning)
-  
-      return updatedMeaning;
-    });
+    // console.log("we find the word to book mark", word)
+    // setMeaning(JSON.parse(localStorage.getItem("bookmarkedWords")))
+
+    // const updatedMeaning = [...meaning]
+    // console.log('updatedMeaning:', updatedMeaning);
+    // console.log('meaning:', meaning);
+
+    // setMeaning((meaning) => {
+    //   const wordIndex = updatedMeaning.findIndex((mng) => {
+    //     console.log("comparing:", mng.word, word);
+    //     return mng.word === word
+    //   });
+    //   console.log('index of the word is ', wordIndex)
+
+    //   if (wordIndex >= 0) {
+    //     console.log("we get into the index if", wordIndex)
+    //     updatedMeaning[wordIndex].isBookmarked = true;
+    //     localStorage.setItem("bookmarkedWords", JSON.stringify(updatedMeaning));
+    //   }
+    //   console.log(updatedMeaning)
+
+    //   return updatedMeaning;
+    // });
   };
-  
 
-  const addNote = (word) => {};
+
+  const addNote = (word) => { };
 
   const checkBookmark = (word) => {
     if (meaning) {
-      const bookmarked = meaning.some(mng => mng.word === word && mng.isBookmarked);
-      setIsBookMarked(bookmarked);
+      const bookmarked = meaning.some(mng => {
+        console.log("ggggg", mng.word, word, mng.isBookmarked)
+        console.log(mng.word === word && mng.isBookmarked)
+        return mng.word === word && mng.isBookmarked
+      });
+      console.log(bookmarked)
+      setIsBookMarked(prev => prev = bookmarked);
     }
     return isbookMarked
   };
-  
+
 
   const toggleTheme = () => {
     localStorage.setItem('mode', !isDarkMode)

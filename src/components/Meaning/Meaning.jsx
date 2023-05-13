@@ -23,9 +23,9 @@ const Meaning = ({meaning,item}) => {
     return (
         <div  className='m-4'>
             
-            <div className='flex items-center items-start '> 
+            <div className='flex items-center items-start cursor-pointer '> 
             <h1 
-                className={`${isDarkMode ? '' : " text-[#0e1621]"} text-3xl mb-4 capitalize`}
+                className={`${isDarkMode ? '' : " text-[#0e1621]"} text-3xl mb-4 capitalize `}
                 onClick={e=>setShow(prev=>!prev)}>
                     {partOfSpeech}  
             </h1>
